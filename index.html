@@ -5,153 +5,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RPM</title>
     <style>
-        body {
+        :root{
+            --primary: #007BFF;
+            --primary-600: #0056b3;
+            --accent: #BF2302;
+            --bg: #f4f6f9;
+            --card: #ffffff;
+            --muted: #6b7280;
+            --radius: 10px;
+            --container-max: 1100px;
+            --gap: 20px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html,body{height:100%;}
+        body {
             margin: 0;
             padding: 0;
-            background-color: #f0f4f8;
+            background-color: var(--bg);
             line-height: 1.6;
-        }
-        header {
-            background-color: #007BFF;
-            color: white;
-            padding: 20px;
-            text-align: center;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-            font-weight: bold;
-        }
-        h2 {
-            margin: 20px 0 10px;
-            color: #333;
-            font-size: 2em;
-        }
-        h4 {
-            margin: 10px 0;
-            color: #555;
-            font-size: 1.4em;
-        }
-        .header-options {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 10px;
-        }
-        .header-option {
-            margin: 0 15px;
-            color: white;
-            text-decoration: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            background-color: #0056b3;
-            transition: background-color 0.3s;
-            font-size: 1.1em;
-        }
-        .header-option:hover {
-            background-color: #004494;
-        }
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            padding: 30px;
-            background: white;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
-            border-radius: 8px;
-            border-left: 5px solid #007BFF;
-        }
-        .content-section {
-            display: flex;
-            align-items: flex-start;
-        }
-        .text-content {
-            margin-left: 20px;
-            flex: 1;
-            font-size: 1.1em;
-            line-height: 1.6;
-        }
-        img {
-            max-width: 300px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        .hidden {
-            display: none;
-        }
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #007BFF;
-            color: white;
-            margin-top: 20px;
-            font-size: 0.9em;
-        }
-        .contenido {
-            margin-top: 20px;
-            display: flex;
-            justify-content: space-between;
-        }
-        .objetivos, .objjetivos_esp {
-            width: 48%;
-            padding: 15px;
-            background: #f9f9f9;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-        .titulo {
-            margin-top: 30px;
-        }
-        .container1 {
-            width: 80%;
-            max-width: 600px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: #fff;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border-left: 5px solid #BF2302;
-            border-radius: 8px;
+            color: #17202a;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
         }
 
-                .form-container {
-            margin-top: 40px;
+        header{
+            background: linear-gradient(90deg,var(--primary),var(--primary-600));
+            color: white;
+            padding: 18px 24px;
+            box-shadow: 0 6px 18px rgba(2,6,23,0.08);
         }
 
-        .centrado{
-        text-align: center;
-        margin-top: 20px;
-    }
+        .header-inner{max-width:var(--container-max);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:var(--gap);}
+        .brand{display:flex;align-items:center;gap:14px}
+        .brand img{max-width:72px;box-shadow:none;border-radius:12px}
+        h1{margin:0;font-size:clamp(1.25rem,2.5vw,2rem);letter-spacing:0.5px}
 
-    .Estilo-Image {
-        width: 300;
-        height: 150;
-        border: 5px solid #000;
-        border-radius: 10px;
-        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
-    }
-        ol {
-            margin-left: 20px;
+        .header-options{display:flex;gap:8px;flex-wrap:nowrap;align-items:center;margin-left:auto}
+        .header-option{display:inline-block;white-space:nowrap;color:white;text-decoration:none;padding:8px 12px;border-radius:8px;background:rgba(255,255,255,0.06);font-weight:600;transition:all .18s ease;box-shadow:inset 0 -1px 0 rgba(0,0,0,0.06)}
+        .header-option:hover{transform:translateY(-2px);background:rgba(255,255,255,0.12)}
+        .header-option.active{background:#ffffff;color:var(--primary);box-shadow:0 4px 12px rgba(0,0,0,0.16)}
+        .nav-toggle{display:none;border:1px solid rgba(255,255,255,0.35);background:rgba(255,255,255,0.14);color:white;border-radius:8px;padding:8px 11px;font-size:1.05rem;cursor:pointer}
+
+        .container{
+            max-width:var(--container-max);
+            margin:24px auto;
+            padding:28px;
+            background:var(--card);
+            box-shadow:0 8px 30px rgba(10,20,40,0.04);
+            border-radius:var(--radius);
+            border-left:6px solid var(--primary);
+        }
+
+        .content-section{display:flex;align-items:flex-start;gap:20px;flex-wrap:wrap}
+        .text-content{flex:1;min-width:220px;font-size:1.05rem;color:var(--muted)}
+
+        img, iframe{max-width:100%;border-radius:8px}
+        img.hero-img{max-width:360px;box-shadow:0 6px 18px rgba(15,30,60,0.08)}
+
+        .hidden{display:none}
+
+        footer{max-width:var(--container-max);margin:20px auto;padding:18px;text-align:center;background:transparent;color:var(--muted);font-size:0.95rem}
+
+        .contenido{margin-top:18px;display:flex;gap:20px;flex-wrap:wrap}
+        .objetivos, .objjetivos_esp{flex:1;min-width:260px;padding:18px;background:#fbfdff;border-radius:8px;box-shadow:0 4px 12px rgba(12,20,40,0.03)}
+
+        .titulo{margin-top:26px}
+
+        .container1{max-width:680px;margin:40px auto;padding:28px;background:var(--card);box-shadow:0 8px 22px rgba(8,18,40,0.04);border-left:6px solid var(--accent);border-radius:10px}
+
+        .form-container{margin-top:28px}
+
+        .centrado{text-align:center;margin-top:20px}
+
+        .Estilo-Image{width:300px;height:150px;border:5px solid #000;border-radius:10px;box-shadow:5px 5px 15px rgba(0,0,0,0.5)}
+
+        ol{margin-left:20px}
+
+        /* CTA style for important links */
+        .cta{display:inline-block;padding:10px 16px;background:var(--primary);color:white;border-radius:8px;text-decoration:none;font-weight:700}
+
+        @media (max-width:1200px){
+            .header-inner{flex-wrap:wrap}
+            .nav-toggle{display:inline-flex}
+            .header-options{display:none;width:100%;flex-direction:column;align-items:stretch;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,0.2)}
+            .header-options.open{display:flex}
+            header .header-option{font-size:0.95rem}
+        }
+
+        @media (max-width:900px){
+            .container{padding:20px}
+        }
+
+        @media (max-width:600px){
+            .contenido{flex-direction:column}
+            .content-section{flex-direction:column}
+            .header-options{width:100%;justify-content:flex-start}
+            .hero-img{width:100%}
         }
     </style>
 </head>
 <body>
 
-    <header style="display: flex; align-items: center; justify-content: space-between; padding: 20px; background-color: #007BFF; color: white;">
-        <div style="display: flex; align-items: center;">
-            <img src="https://raw.githubusercontent.com/RapteRPM/RPM/main/img/LOGO.jpg" alt="Logo" style="max-width: 100px; margin-right: 20px;">
-            <h1 style="margin: 0;">RPM</h1>
+    <header>
+        <div class="header-inner">
+        <div class="brand">
+            <img src="https://raw.githubusercontent.com/RapteRPM/RPM/main/img/LOGO.jpg" alt="Logo RPM">
+            <h1>RPM</h1>
         </div>
-        <div class="header-options">
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="primaryNav">☰</button>
+        <nav class="header-options" id="primaryNav">
             <a href="https://perfil-nu.vercel.app" class="header-option" target="_blank">Ingreso Perfil</a>
-            <a href="#" class="header-option" onclick="showSection('home')">Inicio</a>
-            <a href="#" class="header-option" onclick="showSection('about')">Acerca de Nosotros</a>
-            <a href="#" class="header-option" onclick="showSection('sem1')">Semestre 1</a>
-            <a href="#" class="header-option" onclick="showSection('sem2')">Semestre 2</a>
-            <a href="#" class="header-option" onclick="showSection('sem3')">Semestre 3</a>
-            <a href="#" class="header-option" onclick="showSection('sem4')">Semestre 4</a>
-            <a href="#" class="header-option" onclick="showSection('sem5')">Semestre 5</a> 
+            <a href="#" class="header-option nav-link" data-section="home">Inicio</a>
+            <a href="#" class="header-option nav-link" data-section="about">Acerca de Nosotros</a>
+            <a href="#" class="header-option nav-link" data-section="sem1">Semestre 1</a>
+            <a href="#" class="header-option nav-link" data-section="sem2">Semestre 2</a>
+            <a href="#" class="header-option nav-link" data-section="sem3">Semestre 3</a>
+            <a href="#" class="header-option nav-link" data-section="sem4">Semestre 4</a>
+            <a href="#" class="header-option nav-link" data-section="sem5">Semestre 5</a>
+            <a href="#" class="header-option nav-link" data-section="sem6">Semestre 6</a>
+        </nav>
         </div>
     </header>
 
@@ -471,7 +444,73 @@
     <a href="https://docs.google.com/spreadsheets/d/1qQR7LqCsdwAET_2EO7niRzdnZNrcnDK-/edit?usp=sharing" target="_blank">Abrir Checklist en nueva pestaña</a>
 </div>
 
+<div class="container hidden" id="sem6">
+    <h2>Semestre 6</h2>
+    <p>
+        Durante este sexto semestre, el proyecto se enfocó significativamente en la <strong>creación y desarrollo de una aplicación móvil</strong>, 
+        integrando la plataforma web existente con una experiencia mobile. Se trabajó en la <strong>utilización y consumo de APIs</strong> 
+        desde la aplicación móvil para conectar con el backend, así como en la implementación de <strong>Docker</strong> para la containerización 
+        y despliegue de servicios. Todas estas tecnologías y procesos fueron aplicados de manera integral a nuestro <strong>proyecto integrador RPM</strong>, 
+        garantizando escalabilidad, mantenibilidad y un flujo de desarrollo profesional.
+    </p>
+
+    <!-- Idea Inicial de Aplicación Móvil -->
+    <div class="content-section" style="margin-top: 20px;">
+        <div class="text-content" style="flex: 2; margin-right: 20px;">
+            <h4>Idea Inicial de Aplicación Móvil</h4>
+            <p>En este documento se presenta la propuesta conceptual de la aplicación móvil para RPM, incluyendo las funcionalidades principales, 
+               flujos de usuario y la integración con la plataforma web existente.</p>
+        </div>
+        <div style="flex: 1; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
+            <iframe src="https://drive.google.com/file/d/1iOLghodEqdtnKSnne8grm5lXv_hQyxRq/preview" width="100%" height="500px" style="border: none;"></iframe>
+        </div>
+    </div>
+    <a href="https://drive.google.com/file/d/1iOLghodEqdtnKSnne8grm5lXv_hQyxRq/view?usp=sharing" target="_blank">Ver PDF en una nueva pestaña</a>
+
+    <!-- Configuración de Docker, Bases de Datos y phpAdmin -->
+    <div class="content-section" style="margin-top: 20px;">
+        <div class="text-content" style="flex: 2; margin-right: 20px;">
+            <h4>Configuración de Docker, Bases de Datos y phpAdmin</h4>
+            <p>
+                En esta actividad se documenta el proceso de <strong>orquestación con Docker</strong>, donde se containerizaron múltiples servicios 
+                para el proyecto RPM. <strong>Docker</strong> actúa como el orquestador central que corre simultáneamente:
+                <br><br>
+                • <strong>Servicio de Base de Datos:</strong> contenedor MySQL/PostgreSQL que almacena toda la información de usuarios, productos y transacciones del proyecto.<br>
+                • <strong>phpAdmin:</strong> herramienta web de administración que se conecta al contenedor de BD, permitiendo gestionar la base de datos, 
+                ejecutar consultas SQL y visualizar registros sin necesidad de terminal, todo a través de una interfaz gráfica accesible desde el navegador.<br>
+                <br>
+                La configuración garantiza que todos los servicios estén aislados, sean reproducibles en cualquier máquina y se comuniquen entre sí dentro de la red de Docker, 
+                logrando un entorno de desarrollo y producción consistente y escalable.
+            </p>
+        </div>
+        <div style="flex: 1; border: 1px solid #ddd; border-radius: 5px; overflow: hidden;">
+            <iframe src="https://drive.google.com/file/d/1poLQIcsHmLiWMS2hsCA3tuBAcyFovaNX/preview" width="100%" height="500px" style="border: none;"></iframe>
+        </div>
+    </div>
+    <a href="https://drive.google.com/file/d/1poLQIcsHmLiWMS2hsCA3tuBAcyFovaNX/view?usp=sharing" target="_blank">Ver PDF en una nueva pestaña</a>
+</div>
+
 <script>
+    const navToggle = document.getElementById('navToggle');
+    const primaryNav = document.getElementById('primaryNav');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    function setActiveLink(sectionId) {
+        navLinks.forEach(link => {
+            const isActive = link.dataset.section === sectionId;
+            link.classList.toggle('active', isActive);
+        });
+    }
+
+    function closeMobileNav() {
+        if (primaryNav) {
+            primaryNav.classList.remove('open');
+        }
+        if (navToggle) {
+            navToggle.setAttribute('aria-expanded', 'false');
+        }
+    }
+
     function showSection(sectionId) {
         // Ocultar todas las secciones
         const sections = document.querySelectorAll('.container');
@@ -483,8 +522,31 @@
         const selectedSection = document.getElementById(sectionId);
         if (selectedSection) {
             selectedSection.classList.remove('hidden');
+            setActiveLink(sectionId);
+            closeMobileNav();
         }
     }
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            const sectionId = link.dataset.section;
+            showSection(sectionId);
+        });
+    });
+
+    if (navToggle && primaryNav) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = primaryNav.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        });
+    }
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 1200) {
+            closeMobileNav();
+        }
+    });
 
     // Muestra la sección de inicio al cargar la página
     window.onload = function() {
